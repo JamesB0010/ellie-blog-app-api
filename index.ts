@@ -1,9 +1,14 @@
 import {config} from "./config/config";
-const express = require("express");
-const app = express();
+import {Application} from "express";
+import {Databased} from "./Databased";
 
-app.get("/posts", (req: any, res: any) => {
-  res.send("here are ellies posts");
+const express = require("express");
+const app: Application = express();
+const databse = new Databased();
+
+app.get("/posts", async (req: any, res: any) => {
+    const posts = await databse.getPosts();
+    res.send(posts);
 });
 
 app.listen(config.port, () => {
