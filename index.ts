@@ -2,8 +2,8 @@ import {config} from "./config/config";
 const express = require("express");
 const app = express();
 
-app.get("/", (req: any, res: any) => {
-  res.send("Hello, world!");
+app.get("/posts", (req: any, res: any) => {
+  res.send("here are ellies posts");
 });
 
 app.listen(config.port, () => {
