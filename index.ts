@@ -6,6 +6,10 @@ const express = require("express");
 const app: Application = express();
 const databse = new Databased();
 
+app.get("/", (req: any, res: any) => {
+    res.send("ping");
+});
+
 app.get("/posts", async (req: any, res: any) => {
     const posts = await databse.getPosts();
     res.send(posts);
