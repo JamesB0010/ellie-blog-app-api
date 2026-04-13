@@ -3,8 +3,16 @@ import {Application} from "express";
 import {Databased} from "./Databased";
 
 const express = require("express");
+const cors = require("cors");
+
 const app: Application = express();
 const databse = new Databased();
+
+app.use(cors({
+    origin: "*",
+    allowMethods: ["GET"],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.get("/", (req: any, res: any) => {
     res.send("ping");
